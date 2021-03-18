@@ -1,0 +1,119 @@
+<div class="container container-fluid">
+  <div class="row mt-3">
+    <div class="col col-md-6">
+      <div class="card">
+        <div class="card-header text-center">
+          <h2>Create Trips</h2>
+        </div>
+
+        <div class="card-body">
+          <form (ngSubmit)="handleCreateTrip(f)" #f="ngForm">
+            <div class="row mb-3">
+              <label for="senderValue" class="col-4 col-form-label">From</label>
+              <input
+                type="text"
+                class="col-6 col-form-control"
+                placeholder="from"
+                name="from"
+                required
+                ngModel
+              />
+            </div>
+
+            <div class="row mb-3">
+              <label for="recieverValue" class="col-4 col-form-label">To</label>
+              <input
+                type="text"
+                class="col-6 col-form-control"
+                placeholder="to"
+                name="to"
+                required
+                ngModel
+              />
+            </div>
+
+            <div class="row mb-3">
+              <label for="truckType" class="col-4 col-form-label"
+                >Truck Type</label
+              >
+              <select
+                class="form-select"
+                id="inputGroupSelect03"
+                aria-label="Example select with button addon"
+                name="truckType"
+                ngModel
+                required
+              >
+                <option selected>Select Truck Type</option>
+                <option name="truckType" value="Van">Van</option>
+                <option name="truckType" value="Mini Van">Mini Van</option>
+                <option name="truckType" value="Truck">Truck</option>
+              </select>
+            </div>
+
+            <div class="row mb-3">
+              <label for="date" class="col-4 col-form-label">Date & Time</label>
+              <input
+                type="datetime-local"
+                class="col-6 col-form-control"
+                name="date"
+                default="2021-03-15"
+                required
+                ngModel
+              />
+            </div>
+
+            <div class="mb-3">
+              <button type="submit" class="btn btn-primary">Book Truck</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col col-md-6 mt-2" *ngFor="let trip of onGoingTrips">
+      <!-- <div class="card" *ngIf="!trip?.assignedToAgent">
+        <div class="card-header">
+          <p>From: {{ trip?.from }}</p>
+          <p>To: {{ trip?.to }}</p>
+          <p>TruckType: {{ trip?.truckType }}</p>
+          <p>Date: {{ trip?.date }}</p>
+          <p>Assigned To: {{ trip?.assignedToAgent }}</p>
+        </div>
+  
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <div class="dropdown col-3">
+                <select
+                  #agent
+                  name="agent"
+                  [id]="trip?._id"
+                  (change)="update($event)"
+                >
+                  <option value="default" class="dropdown-menu">
+                    Assign Agent
+                  </option>
+                  <option
+                    *ngFor="let agent of allAgents"
+                    [value]="agent?.name"
+                    class="dropdown-item"
+                  >
+                    {{ agent?.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="col col-8 mt-3">
+                <button class="btn btn-primary" (click)="assignAgent()">
+                  Assign to Agent
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <app-on-going-trips [trip]="trip"></app-on-going-trips>
+    </div>
+  </div>
+</div>

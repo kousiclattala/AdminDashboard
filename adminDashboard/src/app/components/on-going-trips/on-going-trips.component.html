@@ -1,0 +1,50 @@
+<div class="card" *ngIf="!trip?.assignedToAgent">
+  <div class="card-header">
+    <p>From: {{ trip?.from }}</p>
+    <p>To: {{ trip?.to }}</p>
+    <p>TruckType: {{ trip?.truckType }}</p>
+    <p>Date: {{ trip?.date }}</p>
+    <p>Assigned To: {{ trip?.assignedToAgent }}</p>
+  </div>
+
+  <div class="card-body d-flex d-inline-flex">
+    <div class="input m-3">
+      <select
+        class="form-select p-2"
+        [id]="trip?._id"
+        (change)="update($event)"
+        #agent
+      >
+        <option selected>Assign Agent</option>
+        <option *ngFor="let agent of allAgents" [value]="agent?.name">
+          {{ agent?.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mt-3">
+      <button class="btn btn-primary" (click)="assignAgent()">
+        Assign to Agent
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="dropdown col-3">
+  <select
+    #agent
+    name="agent"
+    [id]="trip?._id"
+    (change)="update($event)"
+    class="form-select"
+  >
+    <option value="default" class="dropdown-menu">Assign Agent</option>
+    <option
+      *ngFor="let agent of allAgents"
+      [value]="agent?.name"
+      class="dropdown-item"
+    >
+      {{ agent?.name }}
+    </option>
+  </select>
+</div> -->

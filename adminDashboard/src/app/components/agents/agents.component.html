@@ -65,10 +65,23 @@
 
     <div class="col col-4 mt-5" *ngFor="let agent of allAgents">
       <div class="card">
-        <div class="card-body">
-          <p class="card-text">Name: {{ agent?.name }}</p>
-          <p class="card-text">Location: {{ agent?.location }}</p>
-          <p class="card-text">Truck Type: {{ agent?.truckType }}</p>
+        <div class="card-body p-0 m-0">
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <th scope="row">Name</th>
+                <td scope="col">{{ agent?.name }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Location</th>
+                <td scope="col">{{ agent?.location }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Truck Type</th>
+                <td scope="col">{{ agent?.truckType }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

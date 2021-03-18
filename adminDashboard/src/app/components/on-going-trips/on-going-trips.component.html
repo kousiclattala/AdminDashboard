@@ -1,10 +1,31 @@
 <div class="card" *ngIf="!trip?.assignedToAgent">
-  <div class="card-header">
-    <p>From: {{ trip?.from }}</p>
-    <p>To: {{ trip?.to }}</p>
-    <p>TruckType: {{ trip?.truckType }}</p>
-    <p>Date: {{ trip?.date }}</p>
-    <p>Assigned To: {{ trip?.assignedToAgent }}</p>
+  <div class="card-header p-0 m-0">
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th scope="row">From</th>
+          <td scope="col">{{ trip?.from }}</td>
+        </tr>
+        <tr>
+          <th scope="row">To</th>
+          <td scope="col">{{ trip?.to }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Truck Type</th>
+          <td scope="col">{{ trip?.truckType }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Date & Time</th>
+          <td scope="col">
+            {{ trip?.date | date: "d MMMM y hh:mm a" }}
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Assigned To</th>
+          <td scope="col">{{ trip?.assignedToAgent }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <div class="card-body d-flex d-inline-flex">

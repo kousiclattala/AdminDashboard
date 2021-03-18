@@ -1,36 +1,52 @@
-<div class="container container-fluid d-flex justify-content-center">
-  <div class="row mt-3">
-    <div class="col col-5">
-      <div class="card">
-        <div class="card-header">
-          <div class="inline-block">
-            <ul class="list-inline">
-              <li class="list-inline-item text-primary">
-                Total Trips: {{ totalTrips?.length }}
-              </li>
-              <li class="list-inline-item text-primary">
-                Total Agents: {{ totalAgents?.length }}
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+<div class="container w-25">
+  <div class="card">
+    <div class="card-body p-0 m-0">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">Total Trips:</th>
+            <td scope="col">{{ totalTrips?.length }}</td>
+            <th scope="col">Toatal Agents:</th>
+            <td scope="col">{{ totalAgents?.length }}</td>
+          </tr>
+          <tr></tr>
+        </thead>
+      </table>
     </div>
+  </div>
+</div>
 
-    <div class="card">
-      <div class="card-header">
-        <h3 class="text-primary p-0">Assigned Trips</h3>
-      </div>
-    </div>
-
-    <div class="col col-lg-5 mt-3" *ngFor="let trip of trips">
-      <div class="card" *ngIf="trip?.assignedToAgent">
-        <div class="card-body">
-          <p class="card-text">From: {{ trip?.from }}</p>
-          <p class="card-text">To: {{ trip?.to }}</p>
-          <p class="card-text">TruckType: {{ trip?.truckType }}</p>
-          <p class="card-text">Date & Time: {{ trip?.date }}</p>
-          <p class="card-text">Assigned To: {{ trip?.assignedToAgent }}</p>
+<div class="container">
+  <div class="row row-cols-2">
+    <div class="col col-lg-5 col-sm-10" *ngFor="let trip of trips">
+      <div class="card mt-2" *ngIf="trip?.assignedToAgent">
+        <div class="card-body p-0 m-0">
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <th scope="row">From</th>
+                <td scope="col">{{ trip?.from }}</td>
+              </tr>
+              <tr>
+                <th scope="row">To</th>
+                <td scope="col">{{ trip?.to }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Truck Type</th>
+                <td scope="col">{{ trip?.truckType }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Date & Time</th>
+                <td scope="col">
+                  {{ trip?.date | date: "d MMMM y hh:mm a" }}
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Assigned To</th>
+                <td scope="col">{{ trip?.assignedToAgent }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
